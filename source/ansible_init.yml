@@ -1,0 +1,7 @@
+---
+.ansible_init:
+  - |
+    echo "🔗 Inventory init"
+    git config --global url."git@gitlab.com:".insteadOf "https://gitlab.com/"
+    git submodule init
+    git submodule update --remote --recursive
