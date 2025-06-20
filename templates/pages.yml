@@ -1,0 +1,29 @@
+---
+spec:
+  inputs:
+    docker_image:
+      default: "registry.gitlab.com/pl.rachuna-net/containers/mkdocs:1.0.0"
+      description: "The docker image to use for the job"
+
+---
+variables:
+  CONTAINER_IMAGE_PAGES: $[[ inputs.docker_image ]]
+
+include:
+  - local: /source/input_variables_mkdocs.yml
+  - local: /source/logo.yml
+
+.pages:deploy:base:
+  image: $CONTAINER_IMAGE_PAGES
+  script:
+    - git config --global --add safe.directory ${CI_PROJECT_DIR}
+    - !reference [.logo]
+    - !reference [.input-variables-mkdocs]
+  pages:
+    publish: public
+
+💿 mkdocs deploy:
+  stage: deploy
+  extends: ['.pages:deploy:base']
+  rules:
+    - when: never
