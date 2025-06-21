@@ -9,8 +9,8 @@ Komponent do wdrożeń bibliotek i aplikacj na środowiska
 ## Ansible
 ::include{file=docs/ansible.md}
 
-## Pages
-::include{file=docs/pages.md}
+## MkDocs Publish gitlab pages
+::include{file=docs/mkdocs.md}
 
 ## Terraform
 ::include{file=docs/terraform.md}

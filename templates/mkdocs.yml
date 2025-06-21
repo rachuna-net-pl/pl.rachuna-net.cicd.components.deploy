@@ -27,3 +27,6 @@ include:
   extends: ['.pages:deploy:base']
   rules:
     - when: never
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    url: https://$CI_PROJECT_NAMESPACE.gitlab.io/$CI_PROJECT_NAME

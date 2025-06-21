@@ -48,8 +48,10 @@ terraform apply -auto-approve
 
 ```yaml
 include:
-  component: registry.gitlab.com/your-group/gitlab-components/terraform-apply
-  inputs:
-    tf_state_name: "production"
-    debug: "true"
+  - component: $CI_SERVER_FQDN/pl.rachuna-net/cicd/components/deploy/terraform@$COMPONENT_VERSION_DEPLOY
+    inputs:
+      docker_image: $CONTAINER_IMAGE_TERRAFORM
+
+💥 terraform apply:
+  rules: !reference [.rule:deploy:terraform, rules]
 ```
